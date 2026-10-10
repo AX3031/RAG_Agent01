@@ -264,6 +264,8 @@ allow_knowledge_file_type: ["txt", "pdf"]  # 支持的知识库文件类型
 
 ## 📌 说明与提示
 
+> ⚠️ 本项目不含APIkey和知识库，**不可直接使用**，需重新配置
+
 > ⚠️ Agent 必须使用**支持工具调用（Function Calling）**的模型，例如 `deepseek-v3`、`qwen-max` 等；`deepseek-r1` 为推理模型，不支持工具调用。
 
 > 💡 涉及位置与天气等关联查询时，代理遵循**先获取位置、再查询天气**的串行工具调用逻辑。
