@@ -272,11 +272,34 @@ allow_knowledge_file_type: ["txt", "pdf"]  # 支持的知识库文件类型
 
 ## 🗺️ Roadmap
 
+### 🧱 结构化输出与工具体系
+
+- [ ] 引入 **Pydantic** 定义工具入参与返回的 Schema，结合 **Tool Strategy** 实现强类型**结构化输出（Structured Output）**，让工具返回结果可被下游稳定消费
 - [ ] 完善文件上传界面（`app_file_uploader.py`），支持在线扩充知识库
-- [ ] 引入 `InMemorySaver` / 数据库持久化，增强会话记忆能力
+
+### 🔌 进阶中间件（Prebuilt Middleware）
+
+- [ ] 集成 `SummarizationMiddleware` —— 对话过长时自动**摘要压缩**历史，控制上下文窗口占用
+- [ ] 集成 `HumanInTheLoopMiddleware` —— 高风险工具调用前**暂停并等待人工审批**（批准 / 编辑 / 拒绝）
+- [ ] 集成 `TodoListMiddleware` —— 复杂任务的**待办清单化编排**与执行状态跟踪
+
+### 🪝 Hook 钩子装饰器
+
+- [ ] 深化中间件钩子装饰器的应用：`@before_model` / `@after_model` / `@wrap_model_call` / `@wrap_tool_call`，在 Agent「推理-行动」循环的各个节点精细化插入监控、改写与兜底逻辑
+
+### 💾 记忆与向量存储升级
+
+- [ ] 使用 `PostgresStore`（LangGraph Store API）实现**跨会话长期记忆**持久化，原生支持向量语义检索
+- [ ] 接入 **Milvus** 构建**远端向量数据库**，替换本地 Chroma，支撑大规模知识库与生产级并发检索
+
+### 📚 RAG 原理与深度优化
+
+- [ ] 补充 RAG 进阶原理与工程实践：`Rerank` **重排序**（召回后精排）、混合检索（Hybrid Search：向量 + 关键词）、召回质量评估与切块策略调优
+- [ ] 支持多模型路由与负载均衡，接入更多外部工具（搜索、数据库查询等）
+
+### 🛡️ 工程质量
+
 - [ ] 补充单元测试与集成测试
-- [ ] 支持多模型路由与负载均衡
-- [ ] 接入更多外部工具（搜索、数据库查询等）
 
 ---
 
